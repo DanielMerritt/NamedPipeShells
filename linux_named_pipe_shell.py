@@ -56,9 +56,11 @@ while True:
 	cmd = input(f"{prompt} ")
 	if cmd == "quit" or cmd == "exit" or cmd == "quit()" or cmd == "exit()":
 		sys.exit()
-	WriteCmd(cmd + "\n")
+	if cmd != "":
+		WriteCmd(cmd + "\n")
 	cmdoutput = ReadCmd()
-	RunCmd(f"echo '' > {stdout}")
+	if cmd != "":
+		RunCmd(f"echo '' > {stdout}")
 	if cmdoutput:
 		if "$" in cmdoutput:
 			pattern = r".*@.*:/.*\$"
